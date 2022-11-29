@@ -1,0 +1,14 @@
+@import '../assets/styles/variables.module';
+
+main, .main {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+@media screen and (min-width: $theme-breakpoints-values-md) {
+  main, .main {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}

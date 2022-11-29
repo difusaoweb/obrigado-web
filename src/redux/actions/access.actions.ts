@@ -132,12 +132,16 @@ export function reduxAccessGetLoginFunction(
   ) => {
     try {
       const { data } = await accessService.getLogin(parameters)
-      const { token, userId } = data.success
-
-      api.defaults.headers.common.Authorization = `Bearer ${userId}`
+      interface DataSucessTypes {
+        token: string
+        userId: number
+      }
+      const { token, userId }: DataSucessTypes = data.success
 
       await localStorage.setItem('@Obrigado:token', token)
-      await localStorage.setItem('@Obrigado:userId', userId)
+      await localStorage.setItem('@Obrigado:userId', `${userId}`)
+
+      api.defaults.headers.common.Authorization = `Bearer ${token}`
 
       dispatch(
         reduxAccessGetStorageDataAction({

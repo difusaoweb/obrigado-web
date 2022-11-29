@@ -15,11 +15,12 @@ import {
 } from '../redux'
 import { Alert } from '../components/atoms/Alert'
 import { Loading } from '../components/atoms/Loading'
+import styles from './index.container.styles.module.scss'
 
 import { Home } from '../pages/Home'
 import { Login } from '../pages/Login'
 import { Profile } from '../pages/Profile'
-// import { ServiceListPage } from '../pages/ServiceList'
+import { Obrigado } from '../pages/Obrigado'
 // import { ServiceAddPage } from '../pages/ServiceAdd'
 // import { CaseListPage } from '../pages/CaseList'
 // import { CaseAddPage } from '../pages/CaseAdd'
@@ -31,7 +32,7 @@ import { Profile } from '../pages/Profile'
 
 const ContainerPage = ({ children }: { children: JSX.Element }) => {
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="lg" className={styles.main}>
       {children}
     </Container>
   )
@@ -55,7 +56,7 @@ const RequireNotAuth = ({ children }: { children: JSX.Element }) => {
   )
   const location = useLocation()
 
-  if (getCheckAuthenticationSuccess === null) {
+  if (getCheckAuthenticationSuccess !== null) {
     return <Navigate to="/" state={{ from: location }} replace />
   }
 
@@ -73,11 +74,13 @@ export const Routes = () => {
     React.useState(false)
 
   async function onReduxAccessGetStorageDataFunction() {
+    console.log('onReduxAccessGetStorageDataFunction')
     await dispatch(reduxAccessGetStorageDataFunction())
     setIsLoadingGetStorageData(false)
   }
 
   async function onReduxAccessCheckAuthenticationFunction() {
+    console.log('onReduxAccessCheckAuthenticationFunction')
     setIsLoadingCheckAuthentication(true)
     await dispatch(reduxAccessCheckAuthenticationFunction())
     setIsLoadingCheckAuthentication(false)
@@ -99,7 +102,14 @@ export const Routes = () => {
   return (
     <>
       <TheRoutes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <ContainerPage>
+              <Home />
+            </ContainerPage>
+          }
+        />
         <Route
           path="/login"
           element={
@@ -185,6 +195,14 @@ export const Routes = () => {
           element={
             <ContainerPage>
               <Profile />
+            </ContainerPage>
+          }
+        />
+        <Route
+          path="/:username/:obrigadoId"
+          element={
+            <ContainerPage>
+              <Obrigado />
             </ContainerPage>
           }
         />

@@ -12,6 +12,7 @@ export interface ReduxUsersGetUserProfileServiceParametersTypes
   extends ReduxUsersGetUserProfileFunctionParametersTypes {}
 
 export interface ReduxUsersGetUserProfileProfileTypes {
+  id: number
   name: string
   avatar: string
   username: string

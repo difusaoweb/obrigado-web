@@ -1,11 +1,14 @@
 import * as React from 'react'
 import { useParams } from 'react-router-dom'
+import { Container } from '@mui/material'
 
 import {
   useAppSelector,
   reduxUsersGetUserProfileFunction,
   useAppDispatch
 } from '../../redux'
+import { ProfileHero } from '../../components/molecules/ProfileHero'
+import { ProfileObrigados } from '../../components/ecosystems/ProfileObrigados/'
 
 export const Profile = () => {
   const { username } = useParams()
@@ -35,5 +38,18 @@ export const Profile = () => {
 
   console.log(getUserProfileSuccess)
 
-  return <></>
+  if (getUserProfileSuccess === null) {
+    return <p>User not found!</p>
+  }
+
+  if (username === undefined) {
+    return <p>User not found!</p>
+  }
+
+  return (
+    <>
+      <ProfileHero profile={getUserProfileSuccess.profile} />
+      <ProfileObrigados profile={getUserProfileSuccess.profile} />
+    </>
+  )
 }

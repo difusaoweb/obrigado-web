@@ -100,7 +100,7 @@ export interface AccessState {
     userId: number
   } | null
 
-  checkAuthenticationSuccess: {
+  getCheckAuthenticationSuccess: {
     authenticated: boolean
   } | null
 

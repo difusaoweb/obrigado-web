@@ -10,6 +10,8 @@ import {
   Alert
 } from '@mui/material'
 
+import { HomeObrigadoCard } from '../../components/molecules/HomeObrigadoCard'
+import { ObrigadoCardAds } from '../../components/molecules/ObrigadoCardAds'
 import {
   useAppSelector,
   reduxObrigadosGetHomeFunction,
@@ -45,10 +47,11 @@ export const Home: React.FC = () => {
   }
 
   return (
-    <Container component="main" maxWidth="xs">
+    <>
+      <ObrigadoCardAds />
       {getHomeSuccess.obrigados.map(item => (
-        <p key={item.id}>{item.value}</p>
+        <HomeObrigadoCard item={item} key={item.id} />
       ))}
-    </Container>
+    </>
   )
 }

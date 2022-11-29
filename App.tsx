@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { createRoot } from 'react-dom/client'
 
 import { Routes } from './src/routes'
-import { theme } from './src/styles/theme'
+import { theme } from './src/assets/styles/theme'
 import { store } from './src/redux'
 
 const container = document.getElementById('root')

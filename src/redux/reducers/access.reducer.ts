@@ -13,7 +13,7 @@ import {
 
 const initialState: AccessState = {
   getStorageDataSuccess: null,
-  checkAuthenticationSuccess: null
+  getCheckAuthenticationSuccess: null
 
   // getLogOutError: null,
   // resetPasswordVerifyCodeActived: null,
@@ -37,14 +37,14 @@ export function accessReducer(
     case REDUX_ACCESS_CHECK_AUTHENTICATION_TYPES: {
       return {
         ...state,
-        checkAuthenticationSuccess: action.payload.success
+        getCheckAuthenticationSuccess: action.payload.success
       }
     }
     case REDUX_ACCESS_GET_LOGIN_TYPES: {
       return {
         ...state,
         getStorageDataSuccess: action.payload.success,
-        checkAuthenticationSuccess: { authenticated: true }
+        getCheckAuthenticationSuccess: { authenticated: true }
       }
     }
     // case GET_LOG_OUT: {

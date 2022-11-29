@@ -1,0 +1,11 @@
+@import '../../../assets/styles/variables.module';
+
+.transfer-amount {
+  color: #222;
+}
+.transfer-amount.sent {
+  color: $theme-palette-error-main;
+}
+.transfer-amount.received {
+  color: $theme-palette-success-main;
+}
